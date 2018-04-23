@@ -1,0 +1,15 @@
+[Unit]
+Description=WOWHoneypot daemon
+Documentation=https://github.com/morihisa/WOWHoneypot
+
+[Service]
+ExecStart = /opt/wowhoneypot/wowhoneypot.sh
+ExecRestart = /bin/kill -WINCH ${MAINPID}
+ExecStop = /bin/kill -WINCH ${MAINPID}
+Restart = no
+Type = simple
+User = wowhoneypot
+Group = wowhoneypot
+
+[Install]
+WantedBy = multi-user.target
