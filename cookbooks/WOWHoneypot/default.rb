@@ -6,7 +6,10 @@
   execute command
 end
 
-remote_file "/etc/ufw/before.rules"
+remote_file "/etc/ufw/before.rules" do
+  owner "root"
+  group "root"
+end
 
 ["yes | sudo ufw enable", "sudo ufw reload"].each { |command| execute command }
 
